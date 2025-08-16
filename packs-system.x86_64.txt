@@ -33,6 +33,9 @@ texinfo
 
 networkmanager
 bluez
+chrony
+cups
+cups-pdf
 
 vim
 nano
