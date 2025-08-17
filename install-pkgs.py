@@ -1,25 +1,22 @@
 #!/usr/bin/python3
+import argparse
 import sys
 import subprocess
 
-MSG_PREFIX = "install-pkgs.py: "
+NAME = "install-pkgs.py"
 
-match len(sys.argv):
-    case 1:
-        print(MSG_PREFIX + "The packages list file wasn't given.", file=sys.stderr)
-        sys.exit(1)
-    case 2:
-        pass
-    case _:
-        print(MSG_PREFIX + "Too many arguments.", file=sys.stderr)
-        sys.exit(1)
-
-pkgs_path = sys.argv[1]
+arg_parser = argparse.ArgumentParser(
+    prog=NAME,
+    description="Arch Linux Modern Install packages installer",
+    usage="%(prog)s [-h | --help] <pkgs_path>",
+)
+arg_parser.add_argument("pkgs_path")
+args = arg_parser.parse_args()
 
 try:
-    pkgs_file = open(pkgs_path, "r", encoding="utf-8", newline="\n")
+    pkgs_file = open(args.pkgs_path, "r", encoding="utf-8", newline="\n")
 except FileNotFoundError as err:
-    print(MSG_PREFIX + f"File can't open: {err}", file=sys.stderr)
+    print(f"{NAME}: File can't open: {err}", file=sys.stderr)
     sys.exit(1)
 
 pkgs = []

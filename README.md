@@ -1,1 +1,1 @@
-# SLJ Arch Linux Modern Install
+# Arch Linux Modern Install
