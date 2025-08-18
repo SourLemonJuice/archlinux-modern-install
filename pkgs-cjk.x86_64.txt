@@ -1,0 +1,6 @@
+# Fonts
+noto-fonts-cjk
+
+# Input method
+fcitx5
+fcitx5-im

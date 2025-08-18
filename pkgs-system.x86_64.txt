@@ -1,3 +1,4 @@
+# Basic kernel and firmware
 base
 linux
 linux-firmware
@@ -6,16 +7,11 @@ sof-firmware
 amd-ucode
 intel-ucode
 
+# Bootloader generator
 dracut
 systemd-ukify
 
-mesa
-lib32-mesa
-vulkan-intel
-lib32-vulkan-intel
-vulkan-radeon
-lib32-vulkan-radeon
-
+# Filesystem utils
 lvm2
 mdadm
 btrfs-progs
@@ -24,56 +20,56 @@ exfatprogs
 e2fsprogs
 ntfs-3g
 
+# Partitioning utils
 gptfdisk
 parted
 
+# manual page
 man-db
 man-pages
 texinfo
 
+# Networking and other communication managers
 networkmanager
+iwd
 bluez
-chrony
 cups
 cups-pdf
 
+# Editor
 vim
 nano
 
+# Common compression or archive utils
 tar
+cpio
 gzip
 xz
 zstd
+zip
+unzip
+unrar
+7zip
 
+# Common utils
 bash-completion
 sudo
 less
 python
-tpm2-tools
-tpm2-tss
 iputils
 openbsd-netcat
 usbutils
 pciutils
 efibootmgr
-acpi
+tpm2-tools
+tpm2-tss
 smartmontools
 hdparm
 sdparm
 nvme-cli
+libva-utils
 
-pipewire
-lib32-pipewire
-pipewire-audio
-pipewire-alsa
-pipewire-pulse
-pipewire-jack
-
-linux-headers
-git
-make
-gcc
-clang
-
+# power management
+acpi
 tuned
 tuned-ppd

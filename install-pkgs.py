@@ -34,6 +34,6 @@ for line in pkgs_file:
 
 # install packages
 try:
-    subprocess.run(["pacman", "-Sy"] + pkgs, check=True)
+    subprocess.run(["pacman", "-Sy", "--needed"] + pkgs, check=True)
 except subprocess.CalledProcessError as err:
     sys.exit(err.returncode)
