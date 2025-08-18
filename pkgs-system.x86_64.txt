@@ -61,6 +61,7 @@ openbsd-netcat
 usbutils
 pciutils
 efibootmgr
+fwupd
 tpm2-tools
 tpm2-tss
 smartmontools
