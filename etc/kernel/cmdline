@@ -1,1 +1,1 @@
-ro quiet splash
+root=UUID:xxxx-xxxx ro quiet splash
