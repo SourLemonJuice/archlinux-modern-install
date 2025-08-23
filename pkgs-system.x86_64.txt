@@ -33,6 +33,7 @@ texinfo
 networkmanager
 iwd
 bluez
+bluez-utils
 cups
 cups-pdf
 
@@ -51,7 +52,7 @@ unzip
 unrar
 7zip
 
-# Common utils
+# Common device utils
 bash-completion
 sudo
 less
