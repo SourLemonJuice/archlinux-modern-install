@@ -49,13 +49,14 @@ xz
 zstd
 zip
 unzip
-unrar
+#unrar
 7zip
 
 # Common device utils
 bash-completion
 sudo
 less
+tree
 python
 iputils
 openbsd-netcat
