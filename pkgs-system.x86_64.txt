@@ -7,9 +7,10 @@ sof-firmware
 amd-ucode
 intel-ucode
 
-# Bootloader generator
+# Boot management
 dracut
 systemd-ukify
+efibootmgr
 
 # Filesystem utils
 lvm2
@@ -36,6 +37,7 @@ bluez
 bluez-utils
 cups
 cups-pdf
+chrony
 
 # Editor
 vim
@@ -49,7 +51,7 @@ xz
 zstd
 zip
 unzip
-#unrar
+unrar
 7zip
 
 # Common device utils
@@ -62,7 +64,6 @@ iputils
 openbsd-netcat
 usbutils
 pciutils
-efibootmgr
 fwupd
 tpm2-tools
 tpm2-tss
