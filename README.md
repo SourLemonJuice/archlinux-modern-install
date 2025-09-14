@@ -1,11 +1,12 @@
 # Arch Linux Modern Install
 
-This repo contains some example `/etc` system-wide configurations and some common utils and drivers.
+This repo contains some example `/etc` system-wide configurations and some common utils and drivers.\
+Only consider x86_64 architecture.
 
 To install a list of packages, run something like:
 
 ```bash
-pacman -Sy --needed $(./filter-pkgs.py pkgs-system.x86_64.txt pkgs-media.x86_64.txt)
+pacman -Sy --needed $(./filter-pkgs.py pkgs-system.txt pkgs-media.txt)
 ```
 
 You can parse multiple pkgs.txt at once like above.
@@ -34,7 +35,7 @@ No desktop will be installed or configured.
 
 You can follow the instructions at the last part of page.
 
-## pkgs-system
+## pkgs-system.txt
 
 Follow the [Installation guide - ArchWiki](https://wiki.archlinux.org/title/Installation_guide)\
 Provide:
@@ -47,18 +48,18 @@ Provide:
 - common file archive utils
 - power management tools
 
-## pkgs-gpu-*
+## pkgs-gpu-*.txt
 
 - OpenGL, Vulkan, and video hardware acceleration drivers for AMD and Intel GPU.\
   See NVIDIA's driver at: [NVIDIA - ArchWiki](https://wiki.archlinux.org/title/NVIDIA)\
   The Accelerated Computing/GPGPU drivers such as OpenCL, CUDA and RCOm are not included.
 
-## pkgs-media
+## pkgs-media.txt
 
 - video, image, and video codecs
 - basic fonts
 
-## pkgs-cjk
+## pkgs-cjk.txt
 
 - Noto Sans CJK
 - fcitx5 input method
@@ -70,14 +71,14 @@ Boot the archiso and partitioning your disk layout at first.
 After that mount them to `/mnt` and install system packages with pacstrap:
 
 ```bash
-pacstrap -K /mnt $(./filter-pkgs.py pkgs-system.x86_64.txt pkgs-...)
+pacstrap -K /mnt $(./filter-pkgs.py pkgs-system.txt pkgs-...)
 ```
 
 I recommend to install these for desktop system:
 
-- pkgs-system.x86_64.txt
-- pkgs-gpu-*.x86_64.txt
-- pkgs-media.x86_64.txt
+- pkgs-system.txt
+- pkgs-gpu-*.txt
+- pkgs-media.txt
 
 Many PC are all have an Intel GPU inside their CPU chip, don't forget this. :)\
 And you can also install NVIDIA GPU drivers yourself at this time.
@@ -99,7 +100,7 @@ root=UUID:6ab9c8fc-5b7d-42fc-97a3-82feec3f5d7d
 ```
 
 Edit the `/etc/dracut.conf.d/local.conf` to make sure you have all the kernel modules that you need in the initramfs state.\
-For example, btrfs need `btrfs` module, LUKS2 encrypted root need `crypto`, TPM2 disk unlock need `tpm2-tss`:
+For example, btrfs need `btrfs` module, LUKS2 encrypted root need `crypto`, TPM2 need `tpm2-tss`:
 
 ```ini
 add_dracutmodules+=" systemd resume btrfs crypt tpm2-tss "
@@ -124,7 +125,7 @@ bootctl install
 
 Hope everything works fine...
 
-Oh right, if bootctl didn't notice you they created an EFI boot entry. You can exit the chroot and create entry under a real environment.\
+Oh right, if bootctl didn't tell you they created an EFI boot entry. You can exit the chroot and create entry under a real environment.\
 But in this way, you will be using the old version of systemd-boot when archiso was created:
 
 ```bash
