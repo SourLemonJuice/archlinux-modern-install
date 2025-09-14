@@ -25,7 +25,8 @@ It use **dracut** to generate initramfs, **systemd-ukify** to generate unified k
 It won't setup or install secure boot stuff.
 
 The network manager is pure **NetworkManager**, no systemd-networkd or other middleware will be used.\
-The randomized mac address will be enabled, and won't send hostname via DHCP by default. When disconnected, will send a DHCP release signal.
+The randomized mac address will be enabled, and won't send hostname via DHCP by default. When disconnected, will send a DHCP release signal.\
+The DNS client is **systemd-resolved**.
 
 The time synchronized service is **chrony** rather then **systemd-timesyncd**.
 
@@ -106,9 +107,17 @@ For example, btrfs need `btrfs` module, LUKS2 encrypted root need `crypto`, TPM2
 add_dracutmodules+=" systemd resume btrfs crypt tpm2-tss "
 ```
 
+Setup [systemd-resolved](https://wiki.archlinux.org/title/Systemd-resolved) stub mode:
+
+```bash
+ln -sf ../run/systemd/resolve/stub-resolv.conf /mnt/etc/resolv.conf
+```
+
 Then setup systemd services:
 
 ```bash
+# run resolved before NetworkManager
+systemctl enable --now systemd-resolved
 systemctl disable --now systemd-networkd
 systemctl enable --now NetworkManager
 
