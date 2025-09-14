@@ -110,6 +110,7 @@ add_dracutmodules+=" systemd resume btrfs crypt tpm2-tss "
 Setup [systemd-resolved](https://wiki.archlinux.org/title/Systemd-resolved) stub mode:
 
 ```bash
+# note: this step require outside chroot
 ln -sf ../run/systemd/resolve/stub-resolv.conf /mnt/etc/resolv.conf
 ```
 
