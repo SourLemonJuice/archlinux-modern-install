@@ -126,6 +126,14 @@ systemctl disable --now systemd-timesyncd
 systemctl enable --now chronyd
 ```
 
+Configure initramfs build hooks. We need to disable the default hook bundled with dracut, and install kernel-install one.\
+But the kernel-install hook is only available on AUR([pacman-hook-kernel-install](https://aur.archlinux.org/packages/pacman-hook-kernel-install)), so you may want to do it later and run the command manually.
+
+```bash
+# disable default dracut hook
+ln -sf /dev/null /etc/pacman.d/hooks/90-dracut-install.hook
+```
+
 And finally, if you think you've done everything, run this(still inside chroot):
 
 ```bash
