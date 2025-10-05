@@ -32,7 +32,9 @@ texinfo
 
 # Networking and other communication managers
 networkmanager
-iwd
+wireless-regdb
+iw
+wireless_tools
 bluez
 bluez-utils
 cups
